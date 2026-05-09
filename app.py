@@ -13,7 +13,7 @@ def init_connection():
         port=39862,
         database="carrentalsystem",
         user="root",
-        password="Q1ZQsRoqrNXBLgbFSINHBsaLNrPbgIME"
+        password="QlZQsRoqrNXBLgbFSINHBsaLNrPbgiME"
     )
 
 conn = init_connection()
