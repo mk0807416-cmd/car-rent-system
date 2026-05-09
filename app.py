@@ -145,7 +145,7 @@ elif menu == "reports":
         query = """
             select payment_date, payment_method, sum(amount) as total
             from payment
-            where payment_date between ? and ?
+            where payment_date between '{start_date}' and '{end_date}'
             group by payment_date, payment_method
         """
         df = pd.read_sql(query, conn, params=[start_date, end_date])
