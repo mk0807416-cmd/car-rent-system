@@ -1,5 +1,5 @@
 import streamlit as st
-import pyodbc
+import mysql.connector
 import pandas as pd
 
 st.set_page_config(page_title="car rental system", layout="wide")
@@ -7,13 +7,12 @@ st.title(" car rental system")
 
 @st.cache_resource
 def init_connection():
-    return pyodbc.connect(
-        "driver={mysql odbc 9.7 unicode driver};"
-        "server=metro.proxy.rlwy.net;"
-        "database=carrentalsystem;"
-        "port=39862;"
-        "uid=root;"
-        "pwd=QlZQsRoqrNXBLgbFSINHBsaLNrPbgiME;"
+    return mysql.connector.connect(
+       host="metro.proxy.rlwy.net",
+        port=39862,
+        database="carrentalsystem",
+        user="root",
+        password="QlZQsRoqrNXBLgbFSINHBsaLNrPbgiME"
     )
 
 conn = init_connection()
