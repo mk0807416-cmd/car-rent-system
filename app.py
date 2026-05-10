@@ -4,7 +4,7 @@ import pandas as pd
 from datetime import datetime
 
 st.set_page_config(page_title="car rental system", layout="wide")
-st.title("🚗 car rental system")
+st.title(" car rental system")
 
 @st.cache_resource
 def init_connection():
@@ -21,11 +21,11 @@ conn = init_connection()
 menu = st.sidebar.selectbox("menu", ["customers", "cars", "reservations", "reports"])
 
 if menu == "customers":
-    st.subheader("📋 customers")
+    st.subheader(" customers")
     df = pd.read_sql("select * from customer", conn)
     st.dataframe(df, use_container_width=True)
     
-    st.subheader("➕ add customer")
+    st.subheader(" add customer")
     with st.form("add_customer"):
         col1, col2 = st.columns(2)
         with col1:
@@ -47,11 +47,11 @@ if menu == "customers":
             st.rerun()
 
 elif menu == "cars":
-    st.subheader("🚗 cars list")
+    st.subheader(" cars list")
     df = pd.read_sql("select * from car", conn)
     st.dataframe(df, use_container_width=True)
     
-    st.subheader("➕ add new car")
+    st.subheader(" add new car")
     with st.form("add_car"):
         col1, col2, col3 = st.columns(3)
         with col1:
@@ -80,14 +80,14 @@ elif menu == "cars":
             st.success("car added successfully")
             st.rerun()
     
-    st.subheader("🔍 search available cars")
+    st.subheader(" search available cars")
     brand_search = st.text_input("search by brand")
     if brand_search:
         query = f"select * from car where brand like '%{brand_search}%' and active = 'yes' and rented = 'no'"
         df_search = pd.read_sql(query, conn)
         st.dataframe(df_search)
     
-    st.subheader("✏️ update car status")
+    st.subheader(" update car status")
     with st.form("update_car"):
         car_id_update = st.number_input("car id to update", step=1)
         new_rented = st.selectbox("rented status", ["yes", "no"])
@@ -101,7 +101,7 @@ elif menu == "cars":
             st.rerun()
 
 elif menu == "reservations":
-    st.subheader("📅 reservations")
+    st.subheader(" reservations")
     df = pd.read_sql("""
         select r.reservation_id, c.name as customer, ca.model as car, r.start_date, r.end_date, r.total_amount, r.reservation_status
         from reservation r
@@ -110,7 +110,7 @@ elif menu == "reservations":
     """, conn)
     st.dataframe(df, use_container_width=True)
     
-    st.subheader("➕ make new reservation")
+    st.subheader(" make new reservation")
     with st.form("add_reservation"):
         col1, col2 = st.columns(2)
         with col1:
@@ -138,7 +138,7 @@ elif menu == "reservations":
             st.rerun()
 
 elif menu == "reports":
-    st.subheader("📊 reports")
+    st.subheader(" reports")
     
     st.subheader("daily payments report")
     col1, col2 = st.columns(2)
