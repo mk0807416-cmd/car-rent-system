@@ -11,7 +11,7 @@ def init_connection():
     return mysql.connector.connect(
         host="metro.proxy.rlwy.net",
         port=39862,
-        database="carrentalsystem",
+        database="railway",
         user="root",
         password="QlZQsRoqrNXBLgbFSINHBsaLNrPbgiME"
     )
